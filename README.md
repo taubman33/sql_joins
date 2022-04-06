@@ -188,14 +188,23 @@ $ psql -d library
 
 -- Find out how many books Albert Camus wrote.
 
--- Find out how many books were written by US authors.
-
 -- Find all books written after 1930 by authors from Argentina.
 
 -- Find all books written before 1980 by authors not from the US.
 
--- Find all authors whose names start with 'J'.
 
--- Find all books whose titles contain 'the'.
 
--- Find all authors who have written books with that start with the letter 'N'.
+
+**Hint: This <u>[resource](https://dataschool.com/how-to-teach-people-sql/left-right-join-animated/)</u> may be useful.**
+
+## Recap
+
+In this lesson, we learned how `foreign keys`/`references` are an important part of designing a database. Not only do they ensure our data is properly structured, they also allow us to perform some awesome queries called `joins`. These joins allow us to aggregate data accross multiple tables!
+
+# Resources
+
+- [Data School: SQL Joins Explained](https://dataschool.com/how-to-teach-people-sql/sql-join-types-explained-visually/)
+- [Code School Try SQL](https://www.codeschool.com/courses/try-sql)
+- [W3 Schools SQL tutorial](https://www.w3schools.com/sql/)
+- [Postgres Guide](http://postgresguide.com/)
+
