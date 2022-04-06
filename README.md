@@ -66,6 +66,15 @@ CREATE TABLE books(
 -- Your Code Here
 ```
 
+
+
+### Writing SQL JOINS
+
+
+Relationships
+Like most databases, relationships are defined with Foreign Keys or References. Where we place these Foreign Keys dictates the type of relationship. Let's take a look at the seed.sql file. If you notice in the todos Create Table statement, we're using References to state that this user_id column references a user in the users table we created in the statement above. This reference is dictating a one-many relationship between the user and todos like so: one user - has many - todos. The Foreign Key or Reference allows us to traverse our database to find related records. We perform this by using a SQL statement called a JOIN.
+
+
 To `SELECT` information on two or more tables at ones, we can use a `JOIN`
 clause. This will produce rows that contain information from both tables. When
 joining two or more tables, we have to tell the database how to match up the
@@ -73,7 +82,30 @@ rows. (e.g. to make sure the author information is correct for each book).
 
 This is done using the `ON` clause, which specifies which properties to match.
 
-### Writing SQL JOINS
+Joins
+Joins are statements that allow us to traverse and join data together by using some kind of Foreign Key or Reference, this is the only way we can perform joins.
+
+
+This is an example of an `INNER JOIN`. Inner joins are the default type of join in `SQL`. When we used the `JOIN` keyword, `SQL` interprets this as `INNER JOIN`. Here's a visual on what happens during an inner join:
+
+<div>
+  <img src="https://dataschool.com/assets/images/how-to-teach-people-sql/innerJoin/innerJoin_3.gif" alt="inner_join_animated"/>
+</div>
+
+Take 5 minutes to read the following: **[Inner Joins Animated](https://dataschool.com/how-to-teach-people-sql/inner-join-animated/)**
+
+As you can see, an `INNER JOIN` creates a new table with the data we speficed during the `SELECT` statement and organizes it based on some kind of `REFERENCE`.
+
+There are a few types of joins such as:
+
+- Left Join
+- Right Join
+- Outer Joins
+- Union
+- Cross Join
+
+
+
 
 ```sql
 SELECT id FROM authors where name = 'J.K. Rowling';
@@ -82,6 +114,8 @@ SELECT * FROM books where author_id = 2;
 SELECT * FROM books JOIN authors ON books.author_id = authors.id;
 SELECT * FROM books JOIN authors ON books.author_id = authors.id WHERE authors.nationality = 'United States of America';
 ```
+
+
 
 
 We can use some premade Seed data to work with these commands
