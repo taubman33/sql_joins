@@ -143,72 +143,9 @@ $ psql -d library
 \i seed.sql
 ```
 
-## Performing CRUD actions with SQL
-
-CRUD stands for the most basic interactions we want to have with any database: **Create, Read, Update and Destroy**.
-
-The most common SQL commands correspond to these 4 actions...
-
-- `INSERT` -> Create a new row
-- `SELECT` -> Read / get information for rows
-- `UPDATE` -> Update a row
-- `DELETE` -> Destroy a row
-
-First, enter into the library DB...
-
-```bash
-$ psql
-$ \c library
-```
-
-### INSERT
-
-`INSERT` adds a row to a table...
-
-```sql
-INSERT INTO authors(name, nationality, birth_year) VALUES ('Adam Bray', 'United States of America', 1985);
-```
-
-### SELECT
-
-`SELECT` returns rows from a table...
-
-```sql
--- select all columns and rows from authors
-SELECT * FROM authors;
-
--- select only some columns, all rows from authors
-SELECT name, birth_year FROM authors;
-
--- select rows from authors that meet certain criteria
-SELECT * FROM authors WHERE name = 'James Baldwin';
-```
-
-### UPDATE
-
-`UPDATE` updates values for one or more rows...
-
-```sql
-UPDATE authors SET name = 'Adam B.', birth_year = 1986 WHERE name = 'Adam Bray';
-```
-
-### DELETE
-
-`DELETE` removes rows from a table...
-
-```sql
-DELETE FROM authors WHERE name = 'Adam B.';
-```
-
-> **End of `You Do: Building Our Database`**
-
----
 
 ## Exercises
 
-There are two exercises:
-
-- [Basic Queries](basic_queries.sql) - SELECT, INSERT, UPDATE, DELETE
 - [Advanced Queries](advanced_queries.sql) - JOINS
 
 You can run these exercises in the same way that you loaded the schema and seed files. 
