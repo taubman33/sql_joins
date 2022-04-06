@@ -1,10 +1,90 @@
-# Library DB
+[![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
 
-## Get Started
 
-Clone down this repo and open its contents in your favorite text editor. 
+# SQL JOINs
 
-## Creating Our Database
+![](https://365datascience.com/resources/blog/2019-11-what-are-joins.jpg)
+
+## Overview
+
+In this lesson, we'll learn how to interact with and define associated data.
+Utilizing the power of `joins`, we can join related data together utilizing `foreign key` references.
+
+## Getting Started
+
+- Fork and Clone
+
+## Learning Objectives
+
+- Create tables with foreign key references.
+- Create join tables to represent many-to-many relationships.
+- Insert rows in join tables to create many-to-many relationships.
+- Select data about many-to-many relationships using join tables.
+
+## Introduction
+
+While it is conceivable to store all of the data that is needed for a particular domain model object or resource in a single table, there are numerous downsides to such an approach. For example, in sql, if we want to update the name `America` or `Ireland` to `United States of America` or `Republic Of Ireland`, we would have to update every single row in the table that referred to either of these places of origin. Thus, `redundancy` of common data points can make altering or updating these fields difficult.
+
+Further, there are weak guarantees for the consistency and correctness of hard-coded fields in a single column; what prevents a developer who is working on a different feature from using `french` rather than `France` when inserting new rows into the a table? Leveraging table relations can improve `data integrity` and provide stronger guarantees regarding the consistency and correctness of what we store and retrieve from a database.
+
+One of the key features of relational databases is that they can represent
+relationships between rows in different tables.
+
+Consider spotify, we could start out with two tables, `artist` and `track`.
+Our goal now is to somehow indicate the relationship between an artist and a track.
+In this case, that relationship indicates who performed the track.
+
+You can imagine that we'd like to use this information in a number of ways, such as...
+
+- Getting the artist information for a given track
+- Getting all tracks performed by a given artist
+- Searching for tracks based on attributes of the artist (e.g., all tracks
+  performed by artists at Interscope)
+
+## Setting Up Our Database
+
+Let's build out a todo database, starting with todos and users.
+Note how id's are PRIMARY KEYs, and relationships are established when these ids are referenced by other tables.
+
+`seed.sql`
+
+```sql
+-- Your Code Here
+CREATE TABLE authors(
+    id VARCHAR(255) PRIMARY KEY,
+    name VARCHAR(255),
+    nationality VARCHAR(255)
+);
+
+CREATE TABLE books(
+    id VARCHAR(255) PRIMARY KEY,
+    title VARCHAR(255),
+    description VARCHAR(255),
+    completed BOOLEAN NOT NULL,
+    author_id VARCHAR(255) REFERENCES authors(id)
+);
+-- Your Code Here
+```
+
+To `SELECT` information on two or more tables at ones, we can use a `JOIN`
+clause. This will produce rows that contain information from both tables. When
+joining two or more tables, we have to tell the database how to match up the
+rows. (e.g. to make sure the author information is correct for each book).
+
+This is done using the `ON` clause, which specifies which properties to match.
+
+### Writing SQL JOINS
+
+```sql
+SELECT id FROM authors where name = 'J.K. Rowling';
+SELECT * FROM books where author_id = 2;
+
+SELECT * FROM books JOIN authors ON books.author_id = authors.id;
+SELECT * FROM books JOIN authors ON books.author_id = authors.id WHERE authors.nationality = 'United States of America';
+```
+
+
+We can use some premade Seed data to work with these commands
 
 ```bash
 $ createdb library
