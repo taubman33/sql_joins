@@ -104,7 +104,9 @@ There are a few types of joins such as:
 - Union
 - Cross Join
 
-
+<div>
+  <img src="https://i.redd.it/dyqnzpuddxk21.png"
+  </div
 
 
 ```sql
