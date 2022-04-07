@@ -12,5 +12,5 @@ CREATE TABLE books (
   id SERIAL PRIMARY KEY,
   title VARCHAR(255),
   publication_date INTEGER,
-  author_id INTEGER
+  author_id VARCHAR(255) REFERENCES authors(id)
 );

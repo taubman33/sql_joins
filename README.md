@@ -30,7 +30,7 @@ Further, there are weak guarantees for the consistency and correctness of hard-c
 One of the key features of relational databases is that they can represent
 relationships between rows in different tables.
 
-Consider spotify, we could start out with two tables, `artist` and `track`.
+Consider Spotify, we could start out with two tables, `artist` and `track`.
 Our goal now is to somehow indicate the relationship between an artist and a track.
 In this case, that relationship indicates who performed the track.
 
@@ -71,8 +71,8 @@ CREATE TABLE books(
 ### Writing SQL JOINS
 
 
-Relationships
-Like most databases, relationships are defined with Foreign Keys or References. Where we place these Foreign Keys dictates the type of relationship. Let's take a look at the seed.sql file. If you notice in the todos Create Table statement, we're using References to state that this user_id column references a user in the users table we created in the statement above. This reference is dictating a one-many relationship between the user and todos like so: one user - has many - todos. The Foreign Key or Reference allows us to traverse our database to find related records. We perform this by using a SQL statement called a JOIN.
+#### Relationships
+Like most databases, relationships are defined with Foreign Keys or References. Where we place these Foreign Keys dictates the type of relationship. Let's take a look at the `schema.sql` file. If you notice in the `books` Create Table statement, we're using References to state that this `author_id` column references an author in the `authors` table we created in the statement above. This reference is dictating a one-to-many relationship between the author and books like so: one author - has many - books. The Foreign Key or Reference allows us to traverse our database to find related records. We perform this by using a SQL statement called a JOIN.
 
 
 To `SELECT` information on two or more tables at ones, we can use a `JOIN`
@@ -82,15 +82,13 @@ rows. (e.g. to make sure the author information is correct for each book).
 
 This is done using the `ON` clause, which specifies which properties to match.
 
-Joins
+#### Joins
 Joins are statements that allow us to traverse and join data together by using some kind of Foreign Key or Reference, this is the only way we can perform joins.
 
 
 This is an example of an `INNER JOIN`. Inner joins are the default type of join in `SQL`. When we used the `JOIN` keyword, `SQL` interprets this as `INNER JOIN`. Here's a visual on what happens during an inner join:
 
-<div>
-  <img src="https://dataschool.com/assets/images/how-to-teach-people-sql/innerJoin/innerJoin_3.gif" alt="inner_join_animated"/>
-</div>
+![Animated Inner Join](https://dataschool.com/assets/images/how-to-teach-people-sql/innerJoin/innerJoin_3.gif)
 
 Take 5 minutes to read the following: **[Inner Joins Animated](https://dataschool.com/how-to-teach-people-sql/inner-join-animated/)**
 
@@ -104,9 +102,8 @@ There are a few types of joins such as:
 - Union
 - Cross Join
 
-<div>
-  <img src="https://i.redd.it/dyqnzpuddxk21.png"
-  </div
+
+![SQL Joins Comparison Chart](https://i.redd.it/dyqnzpuddxk21.png)
 
 
 ```sql
@@ -146,7 +143,7 @@ Take a few minutes to research the other rows.
 
 There are two ways to execute a sql file using psql. 
 
-* Using your normal shell (be sure you have changed directory into this repo):
+* Using your terminal shell (be sure you have changed into this directory):
 
 ```bash
 $ psql -d library < schema.sql
@@ -164,9 +161,9 @@ $ psql -d library
 
 ## Loading A Seed File
 
-We've provided a sql file that adds sample data into our `library` database.
+We've provided a `seed.sql` file that adds sample data into our `library` database.
 
-Load that in so we can practice interacting with our data. Make sure to also look at its contents and see how authors and books are related.
+Run the `seed.sql` using one of the techniques mentioned above, so we can practice interacting with our data. Make sure to also look at its contents and see how authors and books are related.
 
 ```bash
 $ psql -d library < seed.sql
@@ -182,17 +179,17 @@ $ psql -d library
 
 ## Exercises
 
---- Find all fields (book and author related) for all books written by George R.R. Martin.
+- Find all fields (book and author related) for all books written by George R.R. Martin.
 
--- Find all fields (book and author related) for all books written by Milan Kundera.
+- Find all fields (book and author related) for all books written by Milan Kundera.
 
--- Find all books written by an author from China or the UK.
+- Find all books written by an author from China or the UK.
 
--- Find out how many books Albert Camus wrote.
+- Find out how many books Albert Camus wrote.
 
--- Find all books written after 1930 by authors from Argentina.
+- Find all books written after 1930 by authors from Argentina.
 
--- Find all books written before 1980 by authors not from the US.
+- Find all books written before 1980 by authors not from the US.
 
 
 
